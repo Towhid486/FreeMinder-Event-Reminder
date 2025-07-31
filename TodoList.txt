@@ -8,3 +8,11 @@ API List for Project_FreeMinder.com
     6. Reminder List
     7. Reminder Edit/Update
     8. Forgot Password.. verifyEmail-->verifyOTP-->changePassword
+
+
+Package Installation Guide
+    - npm i
+    - npm i -D @types/bcrypt @types/cookie-parser @types/cors @types/express @types/jsonwebtoken @types/multer @types/node nodemon prisma ts-node-dev typescript
+    - npx prisma generate
+    - npx prisma db push
+    - npm run dev
