@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  email     String     @unique
+  password  String
+  country   Country
+  language  Language @default(English)
+  birthday  DateTime?
+  gender    Gender?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  Reminder  reminder[]
+  @@map("users")
+}
+
+model reminder {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  nickName    String  
+  date        DateTime
+  gender      Gender
+  tags        String[]
+  location    String
+  link        String?
+  userId      String   @db.ObjectId
+  user        user     @relation(fields: [userId], references: [id])
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("reminders")
+}
+
+enum Country {
+  Denmark
+  Germany
+  France
+  Austria
+  Sweden
+  Switzerland
+  United_Kingdom
+}
+
+enum Language {
+  English
+  German
+  French
+}
+
+enum Gender {
+  Male
+  Female
+  Other
+}

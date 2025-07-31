@@ -1,0 +1,10 @@
+API List for Project_FreeMinder.com
+
+    1. Registration
+    2. Login
+    3. Profile Read
+    4. Profile Edit/Update
+    5. Add Reminder
+    6. Reminder List
+    7. Reminder Edit/Update
+    8. Forgot Password.. verifyEmail-->verifyOTP-->changePassword
