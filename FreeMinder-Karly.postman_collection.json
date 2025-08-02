@@ -1,0 +1,434 @@
+{
+	"info": {
+		"_postman_id": "6e4f5412-db28-4b26-a5f2-9b95125ceef8",
+		"name": "FreeMinder-Karly",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38200587"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Azhar SMT\",\r\n    \"email\": \"developertowhid@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"country\": \"Austri\",\r\n    \"language\": \"English\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"developertowhid@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profileUpdate",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/profileUpdate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profileUpdate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "changePassword",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/changePassword",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"changePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recoveryVerifyEmail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/recoverVerifyEmail/developertowhid@gmail.com",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recoverVerifyEmail",
+								"developertowhid@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recoverVerifyOTP",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/recoverVerifyOTP/developertowhid@gmail.com/143387",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recoverVerifyOTP",
+								"developertowhid@gmail.com",
+								"143387"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "recoverVerifyOTP Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/recoverVerifyOTP/developertowhid@gmail.com/143387",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"recoverVerifyOTP",
+								"developertowhid@gmail.com",
+								"143387"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reminder",
+			"item": [
+				{
+					"name": "addReminder",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Towhid's Birthday\",\r\n    \"date\": \"2025-09-04T00:00:00.000Z\",\r\n    \"gender\": \"Male\",\r\n    \"tags\": [\"Friends\", \"buddies\", \"Family\"],\r\n    \"location\": \"Chittagong\",\r\n    \"oneWeekBefore\": true,\r\n    \"twoWeekBefore\": true,\r\n    \"link\": \"https://avatars.githubusercontent.com/u/178498383?v=4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/addReminder",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"addReminder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allReminder",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Towhid's Birthday\",\r\n    \"date\": \"2025-09-04T00:00:00.000Z\",\r\n    \"gender\": \"Male\",\r\n    \"tags\": [\"Friends\", \"buddies\", \"Family\"],\r\n    \"location\": \"Chittagong\",\r\n    \"oneWeekBefore\": true,\r\n    \"twoWeekBefore\": true,\r\n    \"link\": \"https://avatars.githubusercontent.com/u/178498383?v=4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/allReminder",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"allReminder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateReminder",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/profileUpdate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profileUpdate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tag",
+			"item": [
+				{
+					"name": "addTag",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Tag 7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/addTag",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"addTag"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allTags",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Towhid's Birthday\",\r\n    \"date\": \"2025-09-04T00:00:00.000Z\",\r\n    \"gender\": \"Male\",\r\n    \"tags\": [\"Friends\", \"buddies\", \"Family\"],\r\n    \"location\": \"Chittagong\",\r\n    \"oneWeekBefore\": true,\r\n    \"twoWeekBefore\": true,\r\n    \"link\": \"https://avatars.githubusercontent.com/u/178498383?v=4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/allTags",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"allTags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTag",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/profileUpdate",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profileUpdate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "localhost:5000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRldmVsb3BlcnRvd2hpZEBnbWFpbC5jb20iLCJ1c2VyX2lkIjoiNjg4YmJmZmJkNTIzMmYyZDIzYTU3MzNjIiwiaWF0IjoxNzU0MDY5MzA4LCJleHAiOjE3NTY2NjEzMDh9.Sgz8Xred5hGSc_kDSnU7qMDDBpS2lIv5MND9lkVD5ac",
+			"type": "string"
+		}
+	]
+}
