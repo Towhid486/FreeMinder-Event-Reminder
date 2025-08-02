@@ -52,4 +52,7 @@ router.put("/changePassword", AuthVerification_1.default, UserController.changeP
 router.post("/addReminder", AuthVerification_1.default, ReminderController.addReminder);
 router.get("/allReminder", AuthVerification_1.default, ReminderController.allReminder);
 router.put("/updateReminder/:id", AuthVerification_1.default, ReminderController.updateReminder);
+router.post("/addTag", ReminderController.addTag);
+router.get("/allTags", ReminderController.allTags);
+router.put("/updateTag/:id", ReminderController.updateTag);
 exports.default = router;

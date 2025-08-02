@@ -12,24 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const nodemailer_1 = __importDefault(require("nodemailer"));
-const SendEmailUtility = (EmailTo, EmailSubject, EmailText) => __awaiter(void 0, void 0, void 0, function* () {
-    let transporter = nodemailer_1.default.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
-        auth: {
-            user: "developertowhid@gmail.com",
-            pass: "zgieegvuihtdkjwo"
-        },
-        tls: { rejectUnauthorized: false }
-    });
-    let mailOptions = {
-        from: 'FreeMinder App <developertowhid@gmail.com>',
-        to: EmailTo,
-        subject: EmailSubject,
-        text: EmailText
-    };
-    return yield transporter.sendMail(mailOptions);
-});
-exports.default = SendEmailUtility;
+exports.CronSchedular = void 0;
+const node_cron_1 = __importDefault(require("node-cron"));
+const ReminderEmailSend_1 = require("./ReminderEmailSend");
+const CronSchedular = () => {
+    // Runs daily at 8AM
+    node_cron_1.default.schedule("0 8 * * *", () => __awaiter(void 0, void 0, void 0, function* () {
+        console.log("🕗 Running daily reminder job");
+        yield (0, ReminderEmailSend_1.sendUpcomingReminderEmails)();
+    }));
+};
+exports.CronSchedular = CronSchedular;

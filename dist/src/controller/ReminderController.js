@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateReminder = exports.allReminder = exports.addReminder = void 0;
+exports.allTags = exports.updateTag = exports.addTag = exports.updateReminder = exports.allReminder = exports.addReminder = void 0;
 const db_prisma_1 = __importDefault(require("../db/db.prisma"));
 const addReminder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -113,3 +113,78 @@ const updateReminder = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.updateReminder = updateReminder;
+const addTag = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let { name } = req.body;
+        const data = yield db_prisma_1.default.tag.create({
+            data: {
+                name: name
+            }
+        });
+        if (data) {
+            res.status(201).json({ status: true, message: "Tag added successfully!", data: data });
+        }
+        else {
+            res.status(400).json({ status: false, message: "Failed to create tag!" });
+        }
+    }
+    catch (e) {
+        if (e instanceof Error) {
+            console.error(e.message);
+            return res.status(500).json({ message: "Something went wrong", error: e.message });
+        }
+        else {
+            console.error(e);
+            return res.status(500).json({ message: "Something went wrong", error: String(e) });
+        }
+    }
+});
+exports.addTag = addTag;
+const updateTag = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const id = req.params.id;
+        let { name } = req.body;
+        const data = yield db_prisma_1.default.tag.update({
+            where: {
+                id: id
+            },
+            data: {
+                name
+            }
+        });
+        return res.json({ status: true, message: "Tag updated", data: data });
+    }
+    catch (e) {
+        if (e instanceof Error) {
+            console.error(e.message);
+            return res.json({ status: false, message: "Internal server error", error: e.message });
+        }
+        else {
+            console.error(e);
+            return res.json({ status: false, message: "Internal server error", error: String(e) });
+        }
+    }
+});
+exports.updateTag = updateTag;
+const allTags = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield db_prisma_1.default.tag.findMany();
+        if (data.length > 0) {
+            return res.json({ status: true, message: "Tag List Found", data: data });
+        }
+        else {
+            return res.json({ status: false, message: "No tag found.", data: data });
+        }
+    }
+    catch (e) {
+        if (e instanceof Error) {
+            console.error(e.message);
+            return res.json({ status: false, message: "Internal server error", error: e.message });
+        }
+        else {
+            console.error(e);
+            return res.json({ status: false, message: "Internal server error", error: String(e) });
+        }
+    }
+});
+exports.allTags = allTags;

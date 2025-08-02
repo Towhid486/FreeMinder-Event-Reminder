@@ -9,9 +9,12 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 require("dotenv/config");
 const cloudinary_1 = require("./src/config/cloudinary");
 const api_1 = __importDefault(require("./src/routes/api"));
+const CronSchedular_1 = require("./src/cronScheduler/CronSchedular");
 //Initialize Express
 const app = (0, express_1.default)();
 (0, cloudinary_1.connectCloudinary)();
+// Cron Scheduler
+(0, CronSchedular_1.CronSchedular)();
 //Middleware
 app.use((0, cors_1.default)({
     origin: "*",
