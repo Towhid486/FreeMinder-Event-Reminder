@@ -4,10 +4,6 @@ const AuthVerification=(req:Request,res:Response,next:NextFunction)=>{
 
     // Receive Token
     let token=req.headers['token'] as string
-    if(!token){
-        token=req.cookies['recruiter_token'] || req.cookies['user_token']
-    }
-    
     // Token Decode
     let decoded=DecodeToken(token) as { email: string, user_id: string } | null;
 

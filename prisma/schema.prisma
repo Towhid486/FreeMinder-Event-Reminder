@@ -13,30 +13,51 @@ model user {
   email     String     @unique
   password  String
   country   Country
-  language  Language @default(English)
+  language  Language   @default(English)
   birthday  DateTime?
-  gender    Gender?
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   Reminder  reminder[]
+
   @@map("users")
 }
 
 model reminder {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  nickName    String  
-  date        DateTime
-  gender      Gender
-  tags        String[]
-  location    String
-  link        String?
-  userId      String   @db.ObjectId
-  user        user     @relation(fields: [userId], references: [id])
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  date          DateTime
+  gender        Gender
+  tags          String[]
+  location      String
+  oneWeekBefore Boolean  @default(true)
+  twoWeekBefore Boolean  @default(false)
+  link          String?
+  userId        String   @db.ObjectId
+  user          user     @relation(fields: [userId], references: [id])
 
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("reminders")
+}
+
+model tag {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("tags")
+}
+
+model otp {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  email       String
+  otp         String
+  status      Int      @default(0)
+  createdDate DateTime @default(now())
+
+  @@map("otps")  // Map to the 'otps' collection in MongoDB
 }
 
 enum Country {

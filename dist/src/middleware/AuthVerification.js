@@ -4,9 +4,6 @@ const TokenHelper_1 = require("../utility/TokenHelper");
 const AuthVerification = (req, res, next) => {
     // Receive Token
     let token = req.headers['token'];
-    if (!token) {
-        token = req.cookies['recruiter_token'] || req.cookies['user_token'];
-    }
     // Token Decode
     let decoded = (0, TokenHelper_1.DecodeToken)(token);
     // Request Header Email+UserID Add

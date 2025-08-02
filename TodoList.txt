@@ -1,13 +1,16 @@
 API List for Project_FreeMinder.com
 
-    1. Registration
-    2. Login
-    3. Profile Read
-    4. Profile Edit/Update
-    5. Add Reminder
-    6. Reminder List
-    7. Reminder Edit/Update
-    8. Forgot Password.. verifyEmail-->verifyOTP-->changePassword
+    1. Registration [Done]
+    2. Login [Done]
+    3. Profile Read [Done]
+    4. Profile Edit/Update [Done]
+    5. Change Password [Done]
+    6. Add Reminder [Done]
+    7. Reminder List [Done]
+    8. Reminder Edit/Update [Done]
+    9. Forgot Password.. verifyEmail-->verifyOTP-->changePassword [Done]
+
+    10.Now need to automate email with cron job using nodemailer
 
 
 Package Installation Guide
